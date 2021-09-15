@@ -1,0 +1,47 @@
+<!-- Angular automatically attaches an ngForm directive to an html form tag. We can access the directive by referencing it via a template reference vairable. 
+    In this way we can reference the properties of the form to determine whether or not the overall form is valid etc.-->
+<form  class="submit-form" (ngSubmit)="onSubmit(productForm)" #productForm="ngForm"  novalidate> 
+    <hr>
+    <div class="form-group">
+        <label for="title">
+            Title:
+        </label>
+        <!-- If name.invalid == true, apply the bootstrap css to the class is-invalid -->
+        <!-- #name is a template reference variable. We are setting it equal to the ngModel, meaning we can access its classes and properties
+            depending on the state of the form-control -->
+        <input id="title" name="title" #title="ngModel" [class.is-invalid]="title.invalid && title.touched" class="form-control is-invalid submit-field" type="text" [(ngModel)]="productModel.title" required>
+        <!-- d-none is a bootstrap class that means "display none".
+            Here we are telling the error message not to display if the form is valid or if the user hasn't touched it yet.-->
+        <small class="text-danger" [class.d-none]="title.valid || title.untouched">Field is required</small>
+    </div>
+
+
+    <div class="form-group">
+        <label for="category">
+            Cateogry:
+        </label>
+        <input id="category" name="category" #category="ngModel" [class.is-invalid]="category.invalid && category.touched" class="form-control is-invalid submit-field" type="text"  [(ngModel)]="productModel.category" required>
+        <small class="text-danger" [class.d-none]="category.valid || category.untouched">Field is required</small>
+    </div>
+    <div class="form-group">
+        <label for="man">
+            Manufacturer:
+        </label>
+        <input id="man" name="man" #man="ngModel" [class.is-invalid]="man.invalid && man.touched" class="form-control is-invalid submit-field" type="text" [(ngModel)]="productModel.man" required>
+        <small class="text-danger" [class.d-none]="man.valid || man.untouched">Field is required</small>
+    </div>
+    <div class="form-group">
+        <label for="minLimit" required>
+            Minimum Limit:
+        </label>
+        <input id="minLimit" name="minLimit" pattern="^[0-9]*$" #minLimit="ngModel" [class.is-invalid]="minLimit.invalid && minLimit.touched" class="form-control is-invalid submit-field" type="number" [(ngModel)]="productModel.minLimit" required>
+        <div *ngIf="minLimit.errors && (minLimit.invalid && minLimit.touched)">
+            <small class="text-danger" *ngIf="minLimit.errors.required">Field is required</small>
+            <small class="text-danger" *ngIf="minLimit.errors.pattern">Must be a valid number</small>
+        </div>
+    </div>
+    <!-- default quantity of 0 and new product will not count as a transaction -->
+
+
+    <button class="btn btn-primary see-all btn-lg" id="new-product-submit" [disabled]="productForm.form.invalid"  type="submit">Add Product</button>
+</form>

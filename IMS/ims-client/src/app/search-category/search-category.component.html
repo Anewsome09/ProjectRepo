@@ -1,0 +1,13 @@
+
+<div id="search-component">
+    <label class="search" for="search-box">Category Search</label><br>
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+    
+    <ul class="search-result">
+      <li *ngFor="let category of categories$ | async" >
+        <button class="btn btn-sm btn-primary"(click)="selectCategory(category)">
+            {{ category }}
+        </button>
+      </li>
+    </ul>
+    </div>

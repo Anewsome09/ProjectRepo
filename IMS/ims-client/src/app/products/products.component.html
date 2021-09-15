@@ -1,0 +1,43 @@
+
+<app-search-category (newCategoryEvent)="categorySelection($event)"></app-search-category> <button class="btn btn-primary see-all-btn" (click)="getProducts()">See All Products</button>
+
+<div class = "container">
+    <div class = "card">
+        <h3 class="text-center"> All Products </h3>
+        <h4 class="error-message">{{errorMessage}}</h4>
+        <div class = "table-responsive table-body card-body">
+            <table class = "table table-striped">
+                <thead class="thead-dark">
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Manufactorer</th>
+                    <th>Min Limit</th>
+                    <th>Quantity</th>
+                    <th>Desired Amount</th>
+                    <th>Vendor</th>
+                    <th>Batch Code</th>
+                    <th>Invoice Number</th>
+                    <th>Adding</th>
+                    <th>Taking</th>
+                </thead>
+                <tbody>
+                    <!-- *ngFor directive-->
+                    <tr *ngFor = "let product of productByCategory">
+                        <td>{{ product.title }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>{{ product.man }}</td>
+                        <td>{{ product.minLimit }}</td>
+                        <td>{{ product.productQuantity}}</td>
+                        <td><input class="input-sm" [(ngModel)]="product.quantity" type="number" id="quantity" name="quantity" min="1"></td> 
+                        <td><input class="input-sm" [(ngModel)]="product.vendor" type="text" id="vendor" maxlength="40"></td>
+                        <td><input class="input-sm"[(ngModel)]="product.batchCode" type="text" id="batchCode" maxlength="10"></td>
+                        <td><input class="input-sm" [(ngModel)]="product.invoiceNumber" type="text" id="invoiceNumber" maxlength="10"></td>
+                        <td><button class="btn btn-primary" (click)="updateProductStock(product, 'IN')">Add</button></td>
+                        <td><button class="btn btn-secondary" (click)="updateProductStock(product, 'OUT')">Remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+

@@ -1,0 +1,67 @@
+.input-sm {
+    width: 80%;
+}
+
+.btn-primary {
+    background-color: #00ADB5;
+    border-color: #00ADB5;
+}
+
+.btn-secondary {
+    background-color: #393E46;
+    border-color: #393E46;
+}
+
+.see-all-btn {
+    margin-left: 4.6em;
+    margin-top: 1em;
+
+}
+
+body {
+    background-color: #222831;
+} 
+
+h1 {
+    color: #EEEEEE;
+}
+
+.search {
+    color: #EEEEEE;
+    margin: .4em;
+    padding: .4em;
+    font-size: 1.2em;
+    font-weight: 100;
+}
+
+#search-component {
+    position: absolute;
+    left: 3em;
+    top: 8em;
+    text-align: center;
+}
+
+#search-box {
+    width: 100%;
+}
+
+#new-product-submit {
+    position: static;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    color: #EEEEEE;
+    width: 100%;
+}
+
+
+
+
+
+.submit-field {
+    width: 70%;
+}

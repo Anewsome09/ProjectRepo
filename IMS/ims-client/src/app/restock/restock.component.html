@@ -1,0 +1,35 @@
+<h1 class = "text-center">Low Stock List</h1>
+
+<div *ngFor = "let product of products" class="container">
+    <div class = "card">
+        <div  *ngIf ="product.productQuantity <= product.minLimit"   class = "card-body">
+            <table class = "table table-striped">
+                <thead>
+                    <th>Name of Product</th>
+                    <th>Manufactuer</th>
+                    <th>Minimum Quantity Limit</th>
+                    <th>Current Quantity</th>
+                </thead>
+                <tbody>
+                        <tr>
+                        <td> {{product.title}}</td>
+                        <td> {{product.man}}</td>
+                        <td> {{product.minLimit}}</td>
+                        <td> {{product.productQuantity}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- <h2>List</h2>
+<ul>
+  <li *ngFor = "let product of products">
+    <ul *ngIf ="product.productQuantity < product.minLimit">
+        <span product.title>{{product.title}}</span> 
+        <span product.productQuantity>{{product.productQuantity}}</span> 
+    </ul>
+  </li>
+</ul>  -->
